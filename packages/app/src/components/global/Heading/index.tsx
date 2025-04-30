@@ -75,7 +75,7 @@ export default function Heading() {
     >
       <Container size="md" className={classes.inner} pos="relative">
         <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
-          <Text>Job Applications{!isAuthenticated && ' - Guest Mode'}</Text>
+          <Text>Job Apps{!isAuthenticated && ' - Guest Mode'}</Text>
         </Link>
         <Group gap={5} visibleFrom="xs">
           {items}

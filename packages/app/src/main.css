@@ -1,0 +1,14 @@
+body,
+#root {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

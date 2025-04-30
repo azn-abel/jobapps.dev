@@ -1,0 +1,19 @@
+{
+  "name": "jobapps.dev",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build --workspace=app",
+    "preview": "npm run preview --workspace=app",
+    "devf": "npm run dev --workspace=app",
+    "devb": "npm run dev --workspace=api",
+    "deploy": "npm run deploy --workspace=api"
+  },
+  "keywords": [],
+  "author": "Abel Lu",
+  "license": "ISC",
+  "description": "A minimal, no-BS job applications tracker.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true
+}

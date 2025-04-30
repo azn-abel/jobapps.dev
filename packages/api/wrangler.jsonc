@@ -1,0 +1,86 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "jobapps-backend",
+  "main": "src/index.ts",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application",
+  },
+  "compatibility_date": "2025-04-26",
+  // "compatibility_flags": [
+  //   "nodejs_compat"
+  // ],
+  "vars": {
+    "GOOGLE_CLIENT_ID": "550007723780-6d7vd2gcfer5ki3vcie9jaiuugu2caab.apps.googleusercontent.com",
+    "FRONTEND_ORIGIN": "https://jobapps.dev",
+  },
+  "env": {
+    "preview": {
+      "vars": {
+        "FRONTEND_ORIGIN": "https://*.jobapps.pages.dev",
+        "GOOGLE_CLIENT_ID": "550007723780-6d7vd2gcfer5ki3vcie9jaiuugu2caab.apps.googleusercontent.com",
+      },
+      "kv_namespaces": [
+        {
+          "binding": "TEST_AUTH_KV",
+          "id": "399f6b4784b94bcc93d355abc1febbb4",
+        },
+        {
+          "binding": "TEST_SESSION_KV",
+          "id": "39db006329ce4f729d183c0feb7d09c0",
+        },
+        {
+          "binding": "TEST_APPLICATION_KV",
+          "id": "93614eab5a634e80b4a07082ddb87065",
+        },
+        {
+          "binding": "TEST_ARCHIVE_KV",
+          "id": "a1a7ef2d1d4f4b489bcc5fc00a65ef38",
+        },
+      ],
+      "observability": { "logs": { "enabled": true } },
+    },
+  },
+  "kv_namespaces": [
+    {
+      "binding": "TEST_AUTH_KV",
+      "id": "a68572928d2049c29bdb9049d862c515",
+      "preview_id": "399f6b4784b94bcc93d355abc1febbb4",
+    },
+    {
+      "binding": "TEST_SESSION_KV",
+      "id": "5e33e715e2564c1ca6d67decfaece991",
+      "preview_id": "39db006329ce4f729d183c0feb7d09c0",
+    },
+    {
+      "binding": "TEST_APPLICATION_KV",
+      "id": "d748f72e5ca54f7191b68a55a61d62d4",
+      "preview_id": "93614eab5a634e80b4a07082ddb87065",
+    },
+    {
+      "binding": "TEST_ARCHIVE_KV",
+      "id": "d04a398f22dc4c03b72a47a34c2517d5",
+      "preview_id": "a1a7ef2d1d4f4b489bcc5fc00a65ef38",
+    },
+  ],
+  // "r2_buckets": [
+  //   {
+  //     "binding": "MY_BUCKET",
+  //     "bucket_name": "my-bucket"
+  //   }
+  // ],
+  // "d1_databases": [
+  //   {
+  //     "binding": "MY_DB",
+  //     "database_name": "my-database",
+  //     "database_id": ""
+  //   }
+  // ],
+  // "ai": {
+  //   "binding": "AI"
+  // },
+  // "observability": {
+  //   "enabled": true,
+  //   "head_sampling_rate": 1
+  // }
+}

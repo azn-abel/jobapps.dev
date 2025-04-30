@@ -18,9 +18,7 @@ export async function encryptAndPut(
   value: any,
   secret: string
 ): Promise<void> {
-  console.log(secret);
   const cryptoKey = await getKey(secret);
-  console.log("here");
 
   const iv = crypto.getRandomValues(new Uint8Array(12));
   const encoded = new TextEncoder().encode(JSON.stringify(value));

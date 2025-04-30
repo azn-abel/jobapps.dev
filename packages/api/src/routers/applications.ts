@@ -107,7 +107,6 @@ applicationsRouter.put("/", async (c) => {
 
 applicationsRouter.delete("/", async (c) => {
   const idsString = c.req.query("ids");
-  console.log(idsString);
   if (!idsString)
     return c.json(new JSONFail("no ids specified for deletion"), 400);
 

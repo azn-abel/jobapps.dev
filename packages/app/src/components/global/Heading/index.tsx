@@ -74,9 +74,7 @@ export default function Heading() {
       style={{ zIndex: 200, position: 'relative' }}
     >
       <Container size="md" className={classes.inner} pos="relative">
-        <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
-          <Text>Job Apps{!isAuthenticated && ' - Guest Mode'}</Text>
-        </Link>
+        <Text>Job Apps{!isAuthenticated && ' - Guest Mode'}</Text>
         <Group gap={5} visibleFrom="xs">
           {items}
           {isAuthenticated ? (

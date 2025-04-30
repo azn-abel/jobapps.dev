@@ -1,3 +1,6 @@
 .google-btn {
   width: 90px;
+  & > div > div > div:last-child {
+    display: none;
+  }
 }

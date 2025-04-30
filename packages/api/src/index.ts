@@ -25,11 +25,11 @@ app.use(
   })
 );
 
-app.route("/auth", authRouter);
-app.route("/applications", applicationsRouter);
-app.route("/archive", archiveRouter);
+app.route("/api/auth", authRouter);
+app.route("/api/applications", applicationsRouter);
+app.route("/api/archive", archiveRouter);
 
-app.get("/", (c) => {
+app.get("/api", (c) => {
   return c.json(new JSONSuccess("Hello Cloudflare Workers!"));
 });
 

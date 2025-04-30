@@ -1,6 +1,3 @@
 .google-btn {
-  & span {
-    font-family: var(--mantine-font-family) !important;
-  }
   width: 90px;
 }

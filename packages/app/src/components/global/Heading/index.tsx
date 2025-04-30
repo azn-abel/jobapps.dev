@@ -138,7 +138,7 @@ function LogoutButton({
         callback()
       }}
       disabled={disabled}
-      miw={90}
+      w={90}
     >
       Sign Out
     </Button>

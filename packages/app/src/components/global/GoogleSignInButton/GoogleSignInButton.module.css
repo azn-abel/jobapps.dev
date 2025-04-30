@@ -2,5 +2,5 @@
   & span {
     font-family: var(--mantine-font-family) !important;
   }
-  min-width: 90px;
+  width: 90px;
 }

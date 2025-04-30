@@ -48,7 +48,7 @@ export default function GoogleSignInButton() {
           text: 'signin',
           size: 'medium',
           logo_alignment: 'center',
-          width: 40,
+          width: 90,
         })
       }
     }

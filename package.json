@@ -13,7 +13,9 @@
   "license": "ISC",
   "description": "A minimal, no-BS job applications tracker.",
   "workspaces": [
-    "packages/*"
+    "app",
+    "api",
+    "shared"
   ],
   "private": true
 }

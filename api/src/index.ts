@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 
-import { Bindings } from "@/types";
+import { Bindings } from "@jobapps.dev/shared/types/config";
 
 import { JSONSuccess } from "@/classes/responseModels";
 

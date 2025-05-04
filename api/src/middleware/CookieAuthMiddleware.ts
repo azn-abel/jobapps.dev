@@ -1,11 +1,11 @@
 import { getCookie, setCookie } from "hono/cookie";
 import { createMiddleware } from "hono/factory";
 
-import { Bindings } from "@/types";
-import { User } from "@/types/users";
+import { Bindings } from "@jobapps.dev/shared/types/config";
+import { User } from "@jobapps.dev/shared/types/users";
 import { z } from "zod";
 import { Context } from "hono";
-import { userSchema } from "@/schemas/users";
+import { userSchema } from "@jobapps.dev/shared/schemas/users";
 import { CookieOptions } from "hono/utils/cookie";
 
 type Session = {

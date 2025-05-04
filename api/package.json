@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250426.0",
+    "@jobapps.dev/shared": "*",
     "wrangler": "^4.4.0"
   }
 }

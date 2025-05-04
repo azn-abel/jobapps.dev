@@ -1,8 +1,7 @@
 import { JSONFail, JSONSuccess } from "@/classes/responseModels";
-import { Bindings } from "@/types";
+import { Bindings } from "@jobapps.dev/shared/types/config";
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
-import { z } from "zod";
 
 import {
   CookieAuthMiddleware,
@@ -11,10 +10,12 @@ import {
 import { RouteProtectionMiddleware } from "@/middleware/RouteProtectionMiddleware";
 import {
   applicationDTOSchema,
-  applicationSchema,
   applicationStoreSchema,
-} from "@/schemas/applications";
-import { Application, ApplicationStore } from "@/types/applications";
+} from "@jobapps.dev/shared/schemas/applications";
+import {
+  Application,
+  ApplicationStore,
+} from "@jobapps.dev/shared/types/applications";
 import { encryptAndPut, getAndDecrypt } from "@/io/encryptedKV";
 
 const applicationsRouter = new Hono<{

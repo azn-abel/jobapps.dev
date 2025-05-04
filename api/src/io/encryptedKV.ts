@@ -1,5 +1,3 @@
-// crypto-helpers.ts
-
 export async function getKey(secret: string): Promise<CryptoKey> {
   const enc = new TextEncoder();
   const keyData = enc.encode(secret);

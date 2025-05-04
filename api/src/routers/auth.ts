@@ -5,7 +5,7 @@ import { sha256 } from "hono/utils/crypto";
 
 import * as jose from "jose";
 
-import { Bindings } from "@/types";
+import { Bindings } from "@jobapps.dev/shared/types/config";
 
 import { JSONSuccess, JSONFail } from "@/classes/responseModels";
 
@@ -15,7 +15,7 @@ import {
   createSession,
   deleteSession,
 } from "@/middleware/CookieAuthMiddleware";
-import { User } from "@/types/users";
+import { User } from "@jobapps.dev/shared/types/users";
 
 interface GooglePayload {
   email: string;

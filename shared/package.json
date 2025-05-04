@@ -1,11 +1,40 @@
 {
-  "name": "shared",
-  "version": "1.0.0",
+  "name": "@jobapps.dev/shared",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "exports": {
+    "./schemas/applications": {
+      "import": "./dist/schemas/applications.js",
+      "types": "./dist/schemas/applications.d.ts"
+    },
+    "./types/applications": {
+      "import": "./dist/types/applications.js",
+      "types": "./dist/types/applications.d.ts"
+    },
+    "./schemas/archive": {
+      "import": "./dist/schemas/archive.js",
+      "types": "./dist/schemas/archive.d.ts"
+    },
+    "./types/archive": {
+      "import": "./dist/types/archive.js",
+      "types": "./dist/types/archive.d.ts"
+    },
+    "./schemas/users": {
+      "import": "./dist/schemas/users.js",
+      "types": "./dist/schemas/users.d.ts"
+    },
+    "./types/users": {
+      "import": "./dist/types/users.js",
+      "types": "./dist/types/users.d.ts"
+    },
+    "./types/config": {
+      "import": "./dist/types/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
   },
-  "author": "",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Abel Lu",
   "license": "ISC",
   "description": "",
   "dependencies": {

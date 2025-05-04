@@ -16,3 +16,5 @@ export type Context = HonoContext<{
   in?: any;
   out?: any;
 }>;
+
+export const __keepModule = true;

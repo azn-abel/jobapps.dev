@@ -1,23 +1,21 @@
 import { JSONFail, JSONSuccess } from "@/classes/responseModels";
-import { Bindings } from "@/types";
+import { Bindings } from "@jobapps.dev/shared/types/config";
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
-import { z } from "zod";
 
 import {
   CookieAuthMiddleware,
   CookieAuthMiddlewareVariables,
 } from "@/middleware/CookieAuthMiddleware";
 import { RouteProtectionMiddleware } from "@/middleware/RouteProtectionMiddleware";
-import {
-  applicationDTOSchema,
-  applicationSchema,
-  applicationStoreSchema,
-} from "@/schemas/applications";
-import { Application, ApplicationStore } from "@/types/applications";
+import { applicationStoreSchema } from "@jobapps.dev/shared/schemas/applications";
+import { ApplicationStore } from "@jobapps.dev/shared/types/applications";
 import { encryptAndPut, getAndDecrypt } from "@/io/encryptedKV";
-import { archiveStoreSchema, putArchiveDTOSchema } from "@/schemas/archive";
-import { ArchiveStore, PutArchiveDTO } from "@/types/archive";
+import {
+  archiveStoreSchema,
+  putArchiveDTOSchema,
+} from "@jobapps.dev/shared/schemas/archive";
+import { ArchiveStore } from "@jobapps.dev/shared/types/archive";
 
 const archiveRouter = new Hono<{
   Bindings: Bindings;

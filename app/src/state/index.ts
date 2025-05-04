@@ -1,4 +1,4 @@
-import { Application } from '../types/applications'
+import { Application } from '@jobapps.dev/shared/types/applications'
 
 import { atom } from 'jotai'
 

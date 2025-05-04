@@ -1,7 +1,7 @@
 import backendClient from './client'
-import { Archive } from '@/types/archive'
+import { ArchiveStore } from '@jobapps.dev/shared/types/archive'
 
-export async function fetchArchive(): Promise<JSONResponse<Archive>> {
+export async function fetchArchive(): Promise<JSONResponse<ArchiveStore>> {
   try {
     const response = await backendClient.get('/archive')
     return response.data

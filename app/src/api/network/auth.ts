@@ -1,4 +1,5 @@
 import backendClient from './client'
+import { User } from '@jobapps.dev/shared/types/users'
 
 export async function sendGoogleToken(
   token: string

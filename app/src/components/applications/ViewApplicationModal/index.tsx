@@ -13,24 +13,19 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 
-import LocalApplicationsAPI from '../../../api/localStorage/applications'
-
-import { uniqueJobTitlesAtom, uniqueCompaniesAtom } from '../../../state'
+import { uniqueJobTitlesAtom, uniqueCompaniesAtom } from '@/state'
 import { useAtom } from 'jotai'
 
-import { validApplicationStates } from '../../../state/constants'
+import { validApplicationStates } from '@/state/constants'
 import { handleStatusDropdownClose } from '../util'
 
 import { useState, useEffect } from 'react'
-import {
-  Application,
-  ApplicationDTO,
-  ApplicationInput,
-  DateString,
-} from '../../../types/applications'
+import { Application, DateString } from '@jobapps.dev/shared/types/applications'
 
-import CustomPillsInput from '../../global/CustomPillsInput'
-import LocalArchiveAPI from '../../../api/localStorage/archive'
+import { ApplicationInput } from '@/types/applications'
+
+import CustomPillsInput from '@/components/global/CustomPillsInput'
+import LocalArchiveAPI from '@/api/localStorage/archive'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)

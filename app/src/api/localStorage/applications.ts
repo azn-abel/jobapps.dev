@@ -3,7 +3,7 @@ import {
   ApplicationDTO,
   ApplicationStore,
   DateString,
-} from '../../types/applications'
+} from '@jobapps.dev/shared/types/applications'
 
 const FAILED_COULDNT_FETCH: JSONFail = {
   success: false,
@@ -72,7 +72,7 @@ const LocalApplicationsAPI = {
         !applications[app.id] ||
         applications[app.id].lastUpdated < app.lastUpdated
       ) {
-        app.lastUpdated = now
+        app.lastUpdated = now.toISOString()
         applications[app.id] = app
       }
     }
@@ -159,7 +159,7 @@ function validateApplication(application: ApplicationDTO): Application | null {
       application.jobDescription && application.jobDescription !== 'null'
         ? application.jobDescription
         : '',
-    lastUpdated: new Date(),
+    lastUpdated: new Date().toISOString(),
   }
 
   return newApp

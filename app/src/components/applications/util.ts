@@ -1,10 +1,8 @@
 import { validApplicationStates } from '../../state/constants'
 import { UseFormReturnType } from '@mantine/form'
-import {
-  ApplicationDTO,
-  ApplicationInput,
-  ApplicationStatus,
-} from '../../types/applications'
+import { ApplicationStatus } from '@jobapps.dev/shared/types/applications'
+
+import { ApplicationInput } from '@/types/applications'
 
 export const handleStatusDropdownClose = (
   form: UseFormReturnType<ApplicationInput>

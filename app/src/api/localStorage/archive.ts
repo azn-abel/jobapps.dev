@@ -1,8 +1,6 @@
-import { Application } from '../../types/applications'
-import { Archive } from '../../types/archive'
-
+import { Application } from '@jobapps.dev/shared/types/applications'
+import { ArchiveStore } from '@jobapps.dev/shared/types/archive'
 import LocalApplicationsAPI from './applications'
-import { downloadCSV } from './io'
 
 const FAILED_COULDNT_FETCH: JSONFail = {
   success: false,
@@ -17,7 +15,7 @@ const FAILED_COULDNT_VALIDATE: JSONFail = {
 const LocalArchiveAPI = {
   key: 'archive',
 
-  fetchArchive(): JSONResponse<Archive> {
+  fetchArchive(): JSONResponse<ArchiveStore> {
     const raw: string | null = localStorage.getItem(this.key)
     const content = raw ? JSON.parse(raw) : {}
     return {

@@ -23,8 +23,9 @@ export const applicationSchema = z.object({
 });
 
 export const applicationDTOSchema = applicationSchema
-  .omit({ id: true, lastUpdated: true })
+  .omit({ lastUpdated: true })
   .extend({
+    id: z.string().optional(),
     tags: z.array(z.string()).default([]),
     interviewDate: z.union([dateStringSchema, z.literal("")]).default(""),
     jobDescription: z.string().default(""),

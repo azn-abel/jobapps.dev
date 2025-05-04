@@ -1,12 +1,8 @@
-import { atom, useAtom } from 'jotai'
+import { useAtom } from 'jotai'
 
 import { isOnlineAtom } from '@/state/online'
 import { authenticatedAtom } from './auth'
-import {
-  Application,
-  ApplicationDTO,
-  ApplicationStore,
-} from '@/types/applications'
+import { ApplicationStore } from '@jobapps.dev/shared/types/applications'
 import NetworkArchiveAPI from '@/api/network/archive'
 import LocalArchiveAPI from '@/api/localStorage/archive'
 

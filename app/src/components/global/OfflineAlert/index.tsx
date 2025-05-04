@@ -3,7 +3,7 @@ import { isOnlineAtom } from '@/state/online'
 import { Alert } from '@mantine/core'
 import { IconInfoCircle } from '@tabler/icons-react'
 import { useAtom } from 'jotai'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function OfflineAlert() {
   const [isOnline] = useAtom(isOnlineAtom)

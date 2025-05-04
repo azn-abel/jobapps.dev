@@ -1,11 +1,5 @@
 import { Timeline, Text } from '@mantine/core'
-import {
-  IconGitBranch,
-  IconGitPullRequest,
-  IconGitCommit,
-  IconMessageDots,
-} from '@tabler/icons-react'
-import { Application } from '../../types/applications'
+import { Application } from '@jobapps.dev/shared/types/applications'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'

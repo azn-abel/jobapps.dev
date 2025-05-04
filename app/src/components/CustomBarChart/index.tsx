@@ -1,5 +1,5 @@
 import { BarChart, BarChartSeries } from '@mantine/charts'
-import { Application } from '../../types/applications'
+import { Application } from '@jobapps.dev/shared/types/applications'
 
 import { getLastSixMonths } from '../../utils/dates'
 

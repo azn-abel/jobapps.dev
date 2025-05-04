@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { Application } from '../types/applications'
+import { Application } from '@jobapps.dev/shared/types/applications'
 
 type MonthCounts = {
   [key: string]: number

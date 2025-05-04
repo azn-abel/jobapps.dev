@@ -12,19 +12,20 @@ import { isNotEmpty, useForm } from '@mantine/form'
 import { useEffect, useState } from 'react'
 import dayjs from 'dayjs'
 
-import { uniqueJobTitlesAtom, uniqueCompaniesAtom } from '../../../state'
+import { uniqueJobTitlesAtom, uniqueCompaniesAtom } from '@/state'
 import { useAtom } from 'jotai'
 
-import { validApplicationStates } from '../../../state/constants'
+import { validApplicationStates } from '@/state/constants'
 
 import { handleStatusDropdownClose } from '../util'
+import { ApplicationInput } from '@/types/applications'
+
 import {
   ApplicationDTO,
-  ApplicationInput,
   DateString,
-} from '../../../types/applications'
+} from '@jobapps.dev/shared/types/applications'
 
-import CustomPillsInput from '../../global/CustomPillsInput'
+import CustomPillsInput from '@/components/global/CustomPillsInput'
 
 import useApplicationsAPI from '@/hooks/applications'
 import { isOnlineAtom } from '@/state/online'
@@ -78,6 +79,7 @@ export default function AddApplicationModal({
       applicationDate: formatDate(values.applicationDate) || '',
       interviewDate: formatDate(values.interviewDate) || '',
       tags: tags,
+      jobDescription: values.jobDescription || '',
     }
 
     if (body.interviewDate && ['New', 'Assessment'].includes(body.status))

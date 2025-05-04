@@ -3,9 +3,9 @@ import { Modal, Button, Flex, Text, LoadingOverlay } from '@mantine/core'
 
 import { useState } from 'react'
 
-import { archiveApplicationsAtom, selectedRowsAtom } from '../../../state'
+import { archiveApplicationsAtom, selectedRowsAtom } from '@/state'
 import { useAtom } from 'jotai'
-import { conditionalS } from '../../../utils'
+import { conditionalS } from '@/utils'
 import { isOnlineAtom } from '@/state/online'
 import { authenticatedAtom } from '@/hooks/auth'
 import useArchiveAPI from '@/hooks/archive'

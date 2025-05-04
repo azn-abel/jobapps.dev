@@ -1,6 +1,7 @@
 import Papa, { ParseStepResult } from 'papaparse'
 import LocalApplicationsAPI from './applications'
-import { Application, ApplicationKeys } from '../../types/applications'
+import { Application } from '@jobapps.dev/shared/types/applications'
+import { ApplicationKeys } from '@/types/applications'
 
 export function downloadCSV(
   data: Application[],

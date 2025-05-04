@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   sankey,
   SankeyGraph,
@@ -9,7 +9,7 @@ import {
 import { useMediaQuery } from '@mantine/hooks'
 import * as d3 from 'd3'
 
-import { Application } from '../../types/applications'
+import { Application } from '@jobapps.dev/shared/types/applications'
 
 type NodeData = { name: string; apps: Application[] }
 type LinkData = { apps: Application[] }

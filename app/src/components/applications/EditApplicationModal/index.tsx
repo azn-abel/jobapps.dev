@@ -13,21 +13,22 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 
-import { uniqueJobTitlesAtom, uniqueCompaniesAtom } from '../../../state'
+import { uniqueJobTitlesAtom, uniqueCompaniesAtom } from '@/state'
 import { useAtom } from 'jotai'
 
-import { validApplicationStates } from '../../../state/constants'
+import { validApplicationStates } from '@/state/constants'
 import { handleStatusDropdownClose } from '../util'
 
 import { useState, useEffect } from 'react'
 import {
   Application,
   ApplicationDTO,
-  ApplicationInput,
   DateString,
-} from '../../../types/applications'
+} from '@jobapps.dev/shared/types/applications'
 
-import CustomPillsInput from '../../global/CustomPillsInput'
+import { ApplicationInput } from '@/types/applications'
+
+import CustomPillsInput from '@/components/global/CustomPillsInput'
 
 import useApplicationsAPI from '@/hooks/applications'
 
@@ -87,6 +88,7 @@ export default function EditApplicationModal({
       applicationDate: formatDate(values.applicationDate!) || '',
       interviewDate: formatDate(values.interviewDate!) || '',
       tags,
+      jobDescription: values.jobDescription || '',
     }
 
     if (body.interviewDate && ['New', 'Assessment'].includes(body.status))

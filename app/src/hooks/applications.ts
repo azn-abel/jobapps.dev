@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
 import * as NetworkApplicationsAPI from '@/api/network/applications'
-import { atom, useAtom } from 'jotai'
+import { useAtom } from 'jotai'
 
 import { isOnlineAtom } from '@/state/online'
 import { authenticatedAtom } from './auth'
@@ -9,7 +8,7 @@ import {
   Application,
   ApplicationDTO,
   ApplicationStore,
-} from '@/types/applications'
+} from '@jobapps.dev/shared/types/applications'
 
 const FAILED_SIGNED_IN_NO_INTERNET: JSONFail = {
   success: false,

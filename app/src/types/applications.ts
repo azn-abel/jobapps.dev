@@ -1,9 +1,7 @@
-export type ApplicationStatus =
-  | 'New'
-  | 'Assessment'
-  | 'Interview'
-  | 'Offer'
-  | 'Rejected'
+import {
+  Application,
+  ApplicationStatus,
+} from '@jobapps.dev/shared/types/applications'
 
 export type Year = `${number}`
 export type Month = `0${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}` | `1${0 | 1 | 2}`
@@ -13,20 +11,6 @@ export type Day =
   | `3${0 | 1}`
 
 export type DateString = `${Year}-${Month}-${Day}` | ''
-
-export type Application = {
-  id: string
-  jobTitle: string
-  company: string
-  status: ApplicationStatus
-  tags: string[]
-  applicationDate: DateString
-  interviewDate: DateString
-  jobDescription: string
-  lastUpdated: Date
-}
-
-export type ApplicationStore = Record<string, Application>
 
 export const ApplicationKeys: (keyof Application)[] = [
   'id',
@@ -38,17 +22,6 @@ export const ApplicationKeys: (keyof Application)[] = [
   'interviewDate',
   'jobDescription',
 ]
-
-export type ApplicationDTO = {
-  id?: string
-  jobTitle: string
-  company: string
-  status: ApplicationStatus
-  tags: string[]
-  applicationDate: DateString
-  interviewDate?: DateString
-  jobDescription?: string
-}
 
 export type ApplicationInput = {
   id?: string

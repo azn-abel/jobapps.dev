@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import {
   fetchCurrentUser,
   requestLogout,
@@ -6,6 +6,7 @@ import {
 } from '@/api/network/auth'
 import { atom, useAtom } from 'jotai'
 import { archiveApplicationsAtom, homeApplicationsAtom } from '@/state'
+import { User } from '@jobapps.dev/shared/types/users'
 
 export const authenticatedAtom = atom(false)
 export const userAtom = atom<User | null>(null)

@@ -1,10 +1,9 @@
-import LocalApplicationsAPI from '@/api/localStorage/applications'
 import backendClient from './client'
 import {
   Application,
   ApplicationDTO,
   ApplicationStore,
-} from '@/types/applications'
+} from '@jobapps.dev/shared/types/applications'
 
 export async function fetchApplications(): Promise<
   JSONResponse<ApplicationStore>

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-import { fetchCurrentUser, sendGoogleToken } from '@/api/network/auth'
+import { sendGoogleToken } from '@/api/network/auth'
 
 import classes from './GoogleSignInButton.module.css'
-import useAuth, { authenticatedAtom, userAtom } from '@/hooks/auth'
+import { authenticatedAtom, userAtom } from '@/hooks/auth'
 import { useAtom } from 'jotai'
 
 export default function GoogleSignInButton() {

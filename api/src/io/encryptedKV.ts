@@ -42,6 +42,7 @@ export async function getAndDecrypt<T = unknown>(
   secret: string
 ): Promise<T | null> {
   const base64Combined = await kv.get(key);
+  console.log(kv, base64Combined);
   if (!base64Combined) return null;
 
   const combined = Uint8Array.from(atob(base64Combined), (c) =>

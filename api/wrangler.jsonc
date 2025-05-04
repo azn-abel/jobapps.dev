@@ -16,7 +16,7 @@
   },
   "env": {
     "preview": {
-      "name": "jobapps-dot-env-preview",
+      "name": "jobapps-dot-dev-preview",
       "vars": {
         "FRONTEND_ORIGIN": "https://jobapps-dot-dev-preview.aluprof4.workers.dev",
         "GOOGLE_CLIENT_ID": "550007723780-6d7vd2gcfer5ki3vcie9jaiuugu2caab.apps.googleusercontent.com",

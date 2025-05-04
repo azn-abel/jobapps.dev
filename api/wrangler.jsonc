@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/wrangler/config-schema.json",
-  "name": "jobapps-backend",
+  "name": "jobapps-dot-dev",
   "main": "src/index.ts",
   "assets": {
     "directory": "./dist",
@@ -17,7 +17,7 @@
   "env": {
     "preview": {
       "vars": {
-        "FRONTEND_ORIGIN": "https://*.jobapps.pages.dev",
+        "FRONTEND_ORIGIN": "https://jobapps-dot-dev-preview.aluprof4.workers.dev",
         "GOOGLE_CLIENT_ID": "550007723780-6d7vd2gcfer5ki3vcie9jaiuugu2caab.apps.googleusercontent.com",
       },
       "kv_namespaces": [

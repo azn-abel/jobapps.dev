@@ -2,10 +2,11 @@
   "name": "jobapps.dev",
   "version": "1.0.0",
   "scripts": {
-    "build": "npm run build --workspace=app",
-    "preview": "npm run preview --workspace=app",
-    "devf": "npm run dev --workspace=app",
-    "devb": "npm run dev --workspace=api",
+    "build": "npm run build --workspace=shared && npm run build --workspace=app",
+    "build:shared": "npm run build --workspace=shared",
+    "preview:ui": "npm run preview --workspace=app",
+    "dev:ui": "npm run dev --workspace=app",
+    "dev:api": "npm run dev --workspace=api",
     "deploy": "npm run deploy --workspace=api"
   },
   "keywords": [],
@@ -13,7 +14,9 @@
   "license": "ISC",
   "description": "A minimal, no-BS job applications tracker.",
   "workspaces": [
-    "packages/*"
+    "app",
+    "api",
+    "shared"
   ],
   "private": true
 }

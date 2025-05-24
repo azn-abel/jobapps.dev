@@ -1,7 +1,6 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
-import { sha256 } from "hono/utils/crypto";
 
 import * as jose from "jose";
 

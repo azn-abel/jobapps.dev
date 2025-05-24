@@ -4,6 +4,8 @@ import { User } from '@jobapps.dev/shared/types/users'
 export async function sendGoogleToken(
   token: string
 ): Promise<JSONResponse<User>> {
+  console.log(token)
+
   try {
     const response = await backendClient.post('/auth/login-with-google', {
       token,

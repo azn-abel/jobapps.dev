@@ -6,8 +6,10 @@ export type Bindings = {
   TEST_SESSION_KV: KVNamespace;
   TEST_APPLICATION_KV: KVNamespace;
   TEST_ARCHIVE_KV: KVNamespace;
+  TEST_INTERVIEW_LIMIT_KV: KVNamespace;
   TEST_ENCRYPTION_SECRET_KEY: SecretsStoreSecret;
   GOOGLE_CLIENT_ID: string;
+  OPENAI_API_KEY: SecretsStoreSecret;
 };
 
 export type Context = HonoContext<{

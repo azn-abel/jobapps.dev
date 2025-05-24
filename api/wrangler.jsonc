@@ -38,6 +38,10 @@
           "binding": "TEST_ARCHIVE_KV",
           "id": "a1a7ef2d1d4f4b489bcc5fc00a65ef38",
         },
+        {
+          "binding": "TEST_INTERVIEW_LIMIT_KV",
+          "id": "b6f183ba3bc04cda95c1752f16a656da",
+        },
       ],
       "observability": { "logs": { "enabled": true } },
     },
@@ -62,6 +66,11 @@
       "binding": "TEST_ARCHIVE_KV",
       "id": "d04a398f22dc4c03b72a47a34c2517d5",
       "preview_id": "a1a7ef2d1d4f4b489bcc5fc00a65ef38",
+    },
+    {
+      "binding": "TEST_INTERVIEW_LIMIT_KV",
+      "id": "835e55ed78f34ab6bda6187ea23a49b1",
+      "preview_id": "b6f183ba3bc04cda95c1752f16a656da",
     },
   ],
   // "r2_buckets": [

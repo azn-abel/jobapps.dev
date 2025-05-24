@@ -8,6 +8,7 @@ import { JSONSuccess } from "@/classes/responseModels";
 import authRouter from "@/routers/auth";
 import applicationsRouter from "@/routers/applications";
 import archiveRouter from "./routers/archive";
+import interviewRouter from "./routers/interview";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
@@ -28,6 +29,7 @@ app.use(
 app.route("/api/auth", authRouter);
 app.route("/api/applications", applicationsRouter);
 app.route("/api/archive", archiveRouter);
+app.route("/api/interview", interviewRouter);
 
 app.get("/api", (c) => {
   return c.json(new JSONSuccess("Hello Cloudflare Workers!"));

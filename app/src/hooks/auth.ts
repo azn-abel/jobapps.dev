@@ -39,6 +39,7 @@ export default function useAuth() {
 
   const login = async (token: string) => {
     setIsLoading(true)
+    console.log(token)
     const response = await sendGoogleToken(token)
     if (response.success) {
       setUser(response.data)

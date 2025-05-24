@@ -9,6 +9,7 @@
     "@hono/zod-validator": "^0.4.3",
     "hono": "^4.7.7",
     "jose": "^6.0.10",
+    "openai": "^4.103.0",
     "zod": "^3.24.3"
   },
   "devDependencies": {

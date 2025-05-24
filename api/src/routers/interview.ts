@@ -71,7 +71,7 @@ interviewRouter.get(
         const questions = JSON.parse(text);
         return c.json(
           new JSONSuccess("successfully generated questions", {
-            remaining: 10 - count - 1,
+            remaining: 25 - count - 1,
             questions,
           })
         );

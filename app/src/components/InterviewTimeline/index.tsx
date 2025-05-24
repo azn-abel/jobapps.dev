@@ -57,25 +57,23 @@ export default function InterviewTimeline({
                 title={
                   <Group gap={4}>
                     {interview.company + ' - ' + interview.jobTitle}
-                    {isAuthenticated && (
-                      <Tooltip
-                        label="Generate Interview Questions"
-                        position="right"
-                        withArrow
+                    <Tooltip
+                      label="Generate Interview Questions"
+                      position="right"
+                      withArrow
+                    >
+                      <ActionIcon
+                        variant="transparent"
+                        size={16}
+                        onClick={() => {
+                          setModalOpened(true)
+                          setCompany(interview.company)
+                          setRole(interview.jobTitle)
+                        }}
                       >
-                        <ActionIcon
-                          variant="transparent"
-                          size={16}
-                          onClick={() => {
-                            setModalOpened(true)
-                            setCompany(interview.company)
-                            setRole(interview.jobTitle)
-                          }}
-                        >
-                          <IconFileSpark size={16} color="#C5A939" />
-                        </ActionIcon>
-                      </Tooltip>
-                    )}
+                        <IconFileSpark size={16} color="#C5A939" />
+                      </ActionIcon>
+                    </Tooltip>
                   </Group>
                 }
               >
@@ -89,14 +87,12 @@ export default function InterviewTimeline({
           <Timeline.Item title="No upcoming interviews." />
         )}
       </Timeline>
-      {isAuthenticated && (
-        <InterviewQuestionsModal
-          opened={modalOpened}
-          setOpened={setModalOpened}
-          company={company}
-          role={role}
-        />
-      )}
+      <InterviewQuestionsModal
+        opened={modalOpened}
+        setOpened={setModalOpened}
+        company={company}
+        role={role}
+      />
     </>
   )
 }
@@ -116,6 +112,8 @@ function InterviewQuestionsModal({
   const [remaining, setRemaining] = useState<number>(-1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string>('')
+
+  const [isAuthenticated] = useAtom(authenticatedAtom)
 
   useEffect(() => {
     setQuestions([])
@@ -141,6 +139,23 @@ function InterviewQuestionsModal({
     } finally {
       setLoading(false)
     }
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Interview Questions"
+        size="lg"
+        centered
+      >
+        <Text>Sign in to generate interview questions.</Text>
+        <Button mt={16} onClick={() => setOpened(false)} color="red">
+          Close
+        </Button>
+      </Modal>
+    )
   }
 
   return (

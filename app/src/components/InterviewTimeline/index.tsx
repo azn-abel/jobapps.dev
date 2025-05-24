@@ -41,7 +41,7 @@ export default function InterviewTimeline({
       return 0
     })
 
-  const [authenticated] = useAtom(authenticatedAtom)
+  const [isAuthenticated] = useAtom(authenticatedAtom)
   const [modalOpened, setModalOpened] = useState(false)
   const [company, setCompany] = useState('')
   const [role, setRole] = useState('')
@@ -56,7 +56,7 @@ export default function InterviewTimeline({
                 title={
                   <Group gap={4}>
                     {interview.company + ' - ' + interview.jobTitle}
-                    {authenticated && (
+                    {isAuthenticated && (
                       <Tooltip
                         label="Generate Interview Questions"
                         position="right"
@@ -88,7 +88,7 @@ export default function InterviewTimeline({
           <Timeline.Item title="No upcoming interviews." />
         )}
       </Timeline>
-      {authenticated && (
+      {isAuthenticated && (
         <InterviewQuestionsModal
           opened={modalOpened}
           setOpened={setModalOpened}

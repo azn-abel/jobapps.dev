@@ -10,6 +10,7 @@ import { useMediaQuery } from '@mantine/hooks'
 import * as d3 from 'd3'
 
 import { Application } from '@jobapps.dev/shared/types/applications'
+import React from 'react'
 
 type NodeData = { name: string; apps: Application[] }
 type LinkData = { apps: Application[] }
@@ -200,7 +201,7 @@ const SankeyChart = ({
       .on('mouseout', () =>
         tooltip.style('display', 'none').style('width', 'fit-content')
       )
-  }, [])
+  }, [applications])
 
   return (
     <svg
@@ -215,4 +216,4 @@ const SankeyChart = ({
   )
 }
 
-export default SankeyChart
+export default React.memo(SankeyChart)

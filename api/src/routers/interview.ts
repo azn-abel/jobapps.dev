@@ -35,11 +35,11 @@ interviewRouter.get(
     const countStr = await kv.get(key);
     const count = parseInt(countStr || "0", 10);
 
-    if (count >= 25) {
+    if (count >= 10) {
       return c.json(new JSONFail("out of generations for today"), 429);
     }
 
-    await kv.put(key, (count + 1).toString(), { expirationTtl: 86400 });
+    await kv.put(key, (count + 1).toString(), { expirationTtl: 3600 });
 
     const company = c.req.valid("query").company;
     const role = c.req.valid("query").role;
@@ -71,7 +71,7 @@ interviewRouter.get(
         const questions = JSON.parse(text);
         return c.json(
           new JSONSuccess("successfully generated questions", {
-            remaining: 25 - count - 1,
+            remaining: 10 - count - 1,
             questions,
           })
         );

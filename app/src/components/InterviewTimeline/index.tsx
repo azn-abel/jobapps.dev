@@ -1,11 +1,25 @@
-import { Timeline, Text, Group, Modal, List, Button } from '@mantine/core'
+import {
+  Timeline,
+  Text,
+  Group,
+  Modal,
+  List,
+  Button,
+  LoadingOverlay,
+} from '@mantine/core'
 import { Application } from '@jobapps.dev/shared/types/applications'
 import { IconFileSpark } from '@tabler/icons-react'
 import { ActionIcon, Tooltip } from '@mantine/core'
 
+import { authenticatedAtom } from '@/hooks/auth'
+
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useState } from 'react'
+import { useAtom } from 'jotai'
+import { Interview } from '@jobapps.dev/shared/types/interview'
+
+import { fetchInterviewQuestions } from '@/api/network/interview'
 
 dayjs.extend(relativeTime)
 
@@ -27,7 +41,10 @@ export default function InterviewTimeline({
       return 0
     })
 
+  const [authenticated] = useAtom(authenticatedAtom)
   const [modalOpened, setModalOpened] = useState(false)
+  const [company, setCompany] = useState('')
+  const [role, setRole] = useState('')
 
   return (
     <>
@@ -39,19 +56,25 @@ export default function InterviewTimeline({
                 title={
                   <Group gap={4}>
                     {interview.company + ' - ' + interview.jobTitle}
-                    <Tooltip
-                      label="Generate Interview Questions"
-                      position="right"
-                      withArrow
-                    >
-                      <ActionIcon
-                        variant="transparent"
-                        size={16}
-                        onClick={() => setModalOpened(true)}
+                    {authenticated && (
+                      <Tooltip
+                        label="Generate Interview Questions"
+                        position="right"
+                        withArrow
                       >
-                        <IconFileSpark size={16} color="#C5A939" />
-                      </ActionIcon>
-                    </Tooltip>
+                        <ActionIcon
+                          variant="transparent"
+                          size={16}
+                          onClick={() => {
+                            setModalOpened(true)
+                            setCompany(interview.company)
+                            setRole(interview.jobTitle)
+                          }}
+                        >
+                          <IconFileSpark size={16} color="#C5A939" />
+                        </ActionIcon>
+                      </Tooltip>
+                    )}
                   </Group>
                 }
               >
@@ -65,10 +88,14 @@ export default function InterviewTimeline({
           <Timeline.Item title="No upcoming interviews." />
         )}
       </Timeline>
-      <InterviewQuestionsModal
-        opened={modalOpened}
-        setOpened={setModalOpened}
-      />
+      {authenticated && (
+        <InterviewQuestionsModal
+          opened={modalOpened}
+          setOpened={setModalOpened}
+          company={company}
+          role={role}
+        />
+      )}
     </>
   )
 }
@@ -76,17 +103,36 @@ export default function InterviewTimeline({
 function InterviewQuestionsModal({
   opened,
   setOpened,
+  company,
+  role,
 }: {
   opened: boolean
   setOpened: (opened: boolean) => void
+  company: string
+  role: string
 }) {
-  const questions = [
-    "What aspects of Meta's technology and mission excites you the most, and how do you see yourself contributing to our efforts?",
-    'Can you describe a situation where you had to balance competing priorities and meet multiple deadlines?',
-    'Tell me about a time when you received feedback or constructive criticism on your work, and how you used it to improve.',
-    "Give an example of a project you led or were a part of that you're particularly proud of, and what you learned from the experience.",
-    'Can you walk me through your process for troubleshooting and resolving a difficult technical issue?',
-  ]
+  const [questions, setQuestions] = useState<Interview[]>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchQuestions = async () => {
+    setLoading(true)
+    setError(null)
+    setQuestions([])
+    try {
+      const response = await fetchInterviewQuestions(company, role)
+      if (response.success) {
+        setQuestions(response.data)
+      } else {
+        setError(response.detail)
+      }
+    } catch (e) {
+      setError('An error occurred while fetching questions.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <Modal
       opened={opened}
@@ -95,6 +141,11 @@ function InterviewQuestionsModal({
       size="lg"
       centered
     >
+      {loading && <LoadingOverlay visible mt={32} />}
+      {questions.length === 0 && !loading && (
+        <Text>Click to generate interview questions.</Text>
+      )}
+      {error && <Text c="red">{error}</Text>}
       <List type="ordered" px={16}>
         {questions.map((question, index) => (
           <List.Item key={index}>
@@ -102,7 +153,9 @@ function InterviewQuestionsModal({
           </List.Item>
         ))}
       </List>
-      <Button mt={16}>Re-generate</Button>
+      <Button mt={16} onClick={() => fetchQuestions()}>
+        Generate
+      </Button>
     </Modal>
   )
 }

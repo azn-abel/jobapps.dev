@@ -26,6 +26,14 @@
       "import": "./dist/types/users.js",
       "types": "./dist/types/users.d.ts"
     },
+    "./schemas/interview": {
+      "import": "./dist/schemas/interview.js",
+      "types": "./dist/schemas/interview.d.ts"
+    },
+    "./types/interview": {
+      "import": "./dist/types/interview.js",
+      "types": "./dist/types/interview.d.ts"
+    },
     "./types/config": {
       "import": "./dist/types/index.js",
       "types": "./dist/types/index.d.ts"

@@ -6,7 +6,7 @@ import SankeyChart from '../components/SankeyChart/sankey'
 import CustomBarChart from '../components/CustomBarChart'
 import InterviewTimeline from '../components/InterviewTimeline'
 
-import { Application } from '../types/applications'
+import { Application } from '@jobapps.dev/shared/types/applications'
 
 import { animationProps, MotionFlex, MotionContainer } from '../state/constants'
 import { useMediaQuery } from '@mantine/hooks'
@@ -43,15 +43,16 @@ export default function Visualize() {
   )
 
   const onMount = async () => {
+    console.log('on mount')
     let data: Application[] = applications
-    if (data.length === 0) {
-      const result = await fetchApplications()
-      if (!result.success) {
-        // Sumn went wrong
-        return
-      }
-      data = Object.values(result.data)
+
+    const result = await fetchApplications()
+    if (!result.success) {
+      // Sumn went wrong
+      return
     }
+    data = Object.values(result.data)
+
     setApplications(data)
     setInterviews(
       data.filter(

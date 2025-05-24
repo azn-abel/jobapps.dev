@@ -35,7 +35,7 @@ interviewRouter.get(
     const countStr = await kv.get(key);
     const count = parseInt(countStr || "0", 10);
 
-    if (count >= 5) {
+    if (count >= 15) {
       return c.json(new JSONFail("out of generations for today"), 429);
     }
 

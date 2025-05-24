@@ -15,6 +15,7 @@ import {
 import { HTTPException } from "hono/http-exception";
 import { RouteProtectionMiddleware } from "@/middleware/RouteProtectionMiddleware";
 
+const RATE_LIMIT = 25;
 const interviewRouter = new Hono<{
   Bindings: Bindings;
   Variables: CookieAuthMiddlewareVariables;
@@ -35,7 +36,7 @@ interviewRouter.get(
     const countStr = await kv.get(key);
     const count = parseInt(countStr || "0", 10);
 
-    if (count >= 25) {
+    if (count >= RATE_LIMIT) {
       return c.json(new JSONFail("out of generations for now"), 429);
     }
 
@@ -71,7 +72,7 @@ interviewRouter.get(
         const questions = JSON.parse(text);
         return c.json(
           new JSONSuccess("successfully generated questions", {
-            remaining: 25 - count - 1,
+            remaining: RATE_LIMIT - count - 1,
             questions,
           })
         );

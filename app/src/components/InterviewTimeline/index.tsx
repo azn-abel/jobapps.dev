@@ -16,7 +16,7 @@ import { authenticatedAtom } from '@/hooks/auth'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAtom } from 'jotai'
 import { Interview } from '@jobapps.dev/shared/types/interview'
 
@@ -89,7 +89,7 @@ export default function InterviewTimeline({
           <Timeline.Item title="No upcoming interviews." />
         )}
       </Timeline>
-      {isAuthenticated && modalOpened && (
+      {isAuthenticated && (
         <InterviewQuestionsModal
           opened={modalOpened}
           setOpened={setModalOpened}
@@ -113,13 +113,19 @@ function InterviewQuestionsModal({
   role: string
 }) {
   const [questions, setQuestions] = useState<Interview[]>([])
-  const [remaining, setRemaining] = useState<number>(0)
+  const [remaining, setRemaining] = useState<number>(-1)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string>('')
+
+  useEffect(() => {
+    setQuestions([])
+    setRemaining(-1)
+    setError('')
+  }, [company])
 
   const fetchQuestions = async () => {
     setLoading(true)
-    setError(null)
+    setError('')
     setQuestions([])
     setRemaining(-1)
     try {

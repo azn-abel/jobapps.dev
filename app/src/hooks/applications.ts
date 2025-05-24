@@ -22,7 +22,6 @@ export default function useApplicationsAPI() {
   const fetchApplications = async (): Promise<
     JSONResponse<ApplicationStore>
   > => {
-    console.log('fetching applications')
     if (isAuthenticated) return await NetworkApplicationsAPI.fetchApplications()
     return LocalApplicationsAPI.fetchApplications()
   }

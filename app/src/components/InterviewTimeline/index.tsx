@@ -6,6 +6,7 @@ import {
   List,
   Button,
   LoadingOverlay,
+  rem,
 } from '@mantine/core'
 import { Application } from '@jobapps.dev/shared/types/applications'
 import { IconFileSpark } from '@tabler/icons-react'
@@ -88,7 +89,7 @@ export default function InterviewTimeline({
           <Timeline.Item title="No upcoming interviews." />
         )}
       </Timeline>
-      {isAuthenticated && (
+      {isAuthenticated && modalOpened && (
         <InterviewQuestionsModal
           opened={modalOpened}
           setOpened={setModalOpened}
@@ -112,6 +113,7 @@ function InterviewQuestionsModal({
   role: string
 }) {
   const [questions, setQuestions] = useState<Interview[]>([])
+  const [remaining, setRemaining] = useState<number>(0)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -119,10 +121,12 @@ function InterviewQuestionsModal({
     setLoading(true)
     setError(null)
     setQuestions([])
+    setRemaining(-1)
     try {
       const response = await fetchInterviewQuestions(company, role)
       if (response.success) {
-        setQuestions(response.data)
+        setQuestions(response.data.questions)
+        setRemaining(response.data.remaining)
       } else {
         setError(response.detail)
       }
@@ -153,6 +157,9 @@ function InterviewQuestionsModal({
           </List.Item>
         ))}
       </List>
+      {remaining >= 0 && questions.length > 0 && (
+        <Text c="dimmed">Remaining: {remaining}</Text>
+      )}
       <Button mt={16} onClick={() => fetchQuestions()}>
         Generate
       </Button>

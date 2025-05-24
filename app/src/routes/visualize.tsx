@@ -43,7 +43,6 @@ export default function Visualize() {
   )
 
   const onMount = async () => {
-    console.log('on mount')
     let data: Application[] = applications
 
     const result = await fetchApplications()

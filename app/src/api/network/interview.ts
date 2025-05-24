@@ -4,12 +4,12 @@ import {
   ApplicationDTO,
   ApplicationStore,
 } from '@jobapps.dev/shared/types/applications'
-import { Interview } from '@jobapps.dev/shared/types/interview'
+import { InterviewResponse } from '@jobapps.dev/shared/types/interview'
 
 export async function fetchInterviewQuestions(
   company: string,
   role: string
-): Promise<JSONResponse<Interview[]>> {
+): Promise<JSONResponse<InterviewResponse>> {
   try {
     const response = await backendClient.get('/interview', {
       params: {
